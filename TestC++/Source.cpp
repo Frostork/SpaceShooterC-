@@ -9,6 +9,10 @@ int main()
 		std::cout << "Erreur de chargement" << std::endl;
 	};
 
+	if (Enemy::enemyTexture.loadFromFile("enemy.png") == false) {
+		std::cout << "Erreur de chargement" << std::endl;
+	};
+
 	Game game("game");
 	game.run();
 }
