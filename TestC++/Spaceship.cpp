@@ -17,33 +17,42 @@ void Spaceship::Move()
 	auto time_elapsed = clock_ship.getElapsedTime().asSeconds();
 	clock_ship.restart();
 
-	if (GetKeyState('Q') & 0x8000) {
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q) && x > 0) {
 		x -= speed * time_elapsed;
 	}
-	if (GetKeyState('D') & 0x8000) {
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) && x < 700) {
 		x += speed * time_elapsed;
 	}
-	if (GetKeyState('Z') & 0x8000) {
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z) && y > 0) {
 		y -= speed * time_elapsed;
 	}
-	if (GetKeyState('S') & 0x8000) {
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) && y < 520) {
 		y += speed * time_elapsed;
 	}
 }
 
+void Spaceship::Shoot()
+{
+	current_cooldown -= clock_shoot_cooldown.getElapsedTime().asSeconds();
+	clock_shoot_cooldown.restart();
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && y < 520) {
+		bulletList.push_back(Bullet());
+	}
+}
 
 void Spaceship::display(sf::RenderWindow& window)
 {
 	window.draw(SpaceshipSprite);
+	for (auto& bullet : bulletList)
+	{
+		bullet.Draw(window);
+	}
 
 	//Debug Player Position
 	//std::cout << "Spaceship at position (" << this->x << "," << this->y << ")" << std::endl;
 }
 
-void Spaceship::fire()
-{
-	std::cout << "Fire !" << std::endl;
-}
 
 void Spaceship::collision()
 {

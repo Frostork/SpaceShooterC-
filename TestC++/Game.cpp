@@ -28,6 +28,7 @@ void Game::processEvents()
 			window.close();
 	}
 	spaceship.Move();
+	spaceship.Shoot();
 }
 
 void Game::update()
