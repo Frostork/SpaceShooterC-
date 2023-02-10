@@ -9,8 +9,6 @@ Spaceship::Spaceship(double _x, double _y) : x(_x), y(_y)
     };
 
     SpaceshipSprite.setTexture(SpaceshipTexture);
-    SpaceshipSprite.setPosition(0, 0);
-
     speed = 350;
 }
 
