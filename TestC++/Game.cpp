@@ -3,7 +3,7 @@
 #include "Game.h"
 #include <iostream>
 
-Game::Game(const std::string& title) : window(sf::VideoMode(800, 600), "Space Shooter"), spaceship(350,500)
+Game::Game(const std::string& title) : window(sf::VideoMode(800, 600), "Space Shooter"), spaceship(350, 500)
 {
 }
 

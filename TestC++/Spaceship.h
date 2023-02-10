@@ -5,18 +5,18 @@
 class Spaceship
 {
 public:
-    double x;
-    double y;
-    double speed;
-    void Move();
-    void display(sf::RenderWindow& window);
-    void fire();
-    void collision();
-    void update();
-    Spaceship(double _x, double _y);
+	double x;
+	double y;
+	double speed;
+	void Move();
+	void display(sf::RenderWindow& window);
+	void fire();
+	void collision();
+	void update();
+	Spaceship(double _x, double _y);
 
 protected:
-    sf::Texture SpaceshipTexture;
-    sf::Sprite SpaceshipSprite;
-    sf::Clock clock_ship;
+	sf::Texture SpaceshipTexture;
+	sf::Sprite SpaceshipSprite;
+	sf::Clock clock_ship;
 };
