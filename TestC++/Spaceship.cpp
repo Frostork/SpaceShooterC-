@@ -49,6 +49,10 @@ void Spaceship::Shoot()
 	for (int i = 0; i < bulletList.size(); i++)
 	{
 		bulletList[i].Move();
+		if (bulletList[i].y <= -50) {
+			bulletList.erase(bulletList.begin() + i);
+			std::cout << "bullet destroyed" << std::endl;
+		}
 	}
 }
 

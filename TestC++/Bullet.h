@@ -16,4 +16,3 @@ protected:
 	sf::Sprite bulletSprite;
 	sf::Clock clock_Bullet;
 };
-
