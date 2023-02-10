@@ -1,4 +1,5 @@
 #include "Spaceship.h"
+#include "Bullet.h"
 #include <iostream>
 #include <Windows.h>
 
@@ -33,11 +34,21 @@ void Spaceship::Move()
 
 void Spaceship::Shoot()
 {
-	current_cooldown -= clock_shoot_cooldown.getElapsedTime().asSeconds();
-	clock_shoot_cooldown.restart();
+	current_cooldown = clock_shoot_cooldown.getElapsedTime().asSeconds();
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && y < 520) {
-		bulletList.push_back(Bullet());
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && current_cooldown >= 0.25f)
+	{
+		Bullet bullet(x + 43.5f, y - 40);
+		bulletList.push_back(bullet);
+
+		clock_shoot_cooldown.restart();
+
+		std::cout << "Fire" << std::endl;
+	}
+
+	for (int i = 0; i < bulletList.size(); i++)
+	{
+		bulletList[i].Move();
 	}
 }
 

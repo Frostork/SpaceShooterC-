@@ -5,6 +5,10 @@
 
 int main()
 {
+	if (Bullet::bulletTexture.loadFromFile("laser.png") == false) {
+		std::cout << "Erreur de chargement" << std::endl;
+	};
+
 	Game game("game");
 	game.run();
 }

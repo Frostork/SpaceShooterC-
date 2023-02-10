@@ -1,22 +1,21 @@
 #include "Bullet.h"
 #include <iostream>
 
-Bullet::Bullet()
-{
-	if (bulletTexture.loadFromFile("laser.png") == false) {
-		std::cout << "Erreur de chargement" << std::endl;
-	};
+sf::Texture Bullet::bulletTexture;
 
+Bullet::Bullet(double _x, double _y)
+{
+	x = _x;
+	y = _y;
+
+	bulletSprite.setPosition(x, y);
 	bulletSprite.setTexture(bulletTexture);
 }
 
 void Bullet::Move()
 {
-	//sprites move
-	bulletSprite.move(sf::Vector2f(0, -0.1f));
-	if (bulletSprite.getPosition().y >= (float)bulletTexture.getSize().y) {
-		bulletSprite.setPosition(0, -(float)bulletTexture.getSize().y);
-	}
+	y -= speed;
+	bulletSprite.setPosition(x, y);
 }
 
 void Bullet::Draw(sf::RenderWindow& window)

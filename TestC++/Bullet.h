@@ -4,12 +4,15 @@
 class Bullet
 {
 public:
-	Bullet();
+	Bullet(double _x, double _y);
+	double x;
+	double y;
+	double speed = 0.13f;
 	void Move();
 	void Draw(sf::RenderWindow& window);
+	static sf::Texture bulletTexture;
 
 protected:
-	sf::Texture bulletTexture;
 	sf::Sprite bulletSprite;
 	sf::Clock clock_Bullet;
 };
